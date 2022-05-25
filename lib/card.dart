@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CardBack extends StatelessWidget {
+  final color;
+
+  CardBack({this.color});
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +15,8 @@ class CardBack extends StatelessWidget {
             color: Colors.white,
             height: 150,
             width: 100,
-            child: Image.asset('assets/blackcard_back.jpg'),
+            
+            child: (color == Colors.red) ? Image.asset('lib/assets/redcard_back.jpg'): Image.asset('lib/assets/blackcard_back.jpg'),
           ),
       ),
     );

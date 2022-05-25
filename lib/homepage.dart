@@ -50,12 +50,12 @@ class _HomePageState extends State<Homepage> with SingleTickerProviderStateMixin
                   suit: heart(),
                 )],
               ),
-              Transform.rotate(angle: pi/2, child: CardBack(),),
+              Transform.rotate(angle: pi/2, child: getFlippingCard("Q", clover(), Colors.red, Colors.red) ,),
               Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  getFlippingCard("Q", clover(), Colors.black),
-                  getFlippingCard("A", diamond(), Colors.red)
+                  getFlippingCard("Q", clover(), Colors.black, Colors.black),
+                  getFlippingCard("A", diamond(), Colors.red, Colors.black)
                 ],
               )
             ],
@@ -65,7 +65,7 @@ class _HomePageState extends State<Homepage> with SingleTickerProviderStateMixin
     );
   }
 
-  Widget getFlippingCard(var number, var suit, var color) {
+  Widget getFlippingCard(var number, var suit, var color, var backColor) {
     return Transform(
       alignment: FractionalOffset.center,
       transform: Matrix4.identity()..setEntry(3, 2, 0.002)..rotateY(pi * _animation.value),
@@ -78,7 +78,9 @@ class _HomePageState extends State<Homepage> with SingleTickerProviderStateMixin
             _animationController.reverse();
           }
         },
-        child: _animation.value >= 0.5 ? CardBack() : CardTemplate(
+        child: _animation.value >= 0.5 ? CardBack(
+          color: backColor,
+        ) : CardTemplate(
                   color: color,
                   number: number,
                   suit: suit,
