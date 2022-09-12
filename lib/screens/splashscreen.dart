@@ -22,56 +22,49 @@ class StartState extends State<SplashScreen> {
   }
 
   route() {
-    Navigator.pushReplacement(context, MaterialPageRoute(
-      builder: (context) => Homepage()
-      ));
+    Navigator.pushReplacement(
+        context, MaterialPageRoute(builder: (context) => Homepage()));
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Container (
-        color: Colors.black,
-        child: Stack(
-          children: [
-            Positioned.fill(
-              child: Opacity (
-                opacity: 0.3,
-                child: Image.asset (
-                'lib/assets/main_bg.jpg',
-                fit: BoxFit.cover),
+        body: Container(
+            color: Colors.black,
+            child: Stack(children: [
+              Positioned.fill(
+                child: Opacity(
+                  opacity: 0.3,
+                  child:
+                      Image.asset('lib/assets/main_bg.jpg', fit: BoxFit.cover),
+                ),
               ),
-            ),
-            Center(
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  ClipOval(
-                    child: Container(
-                      width: 180,
-                      height: 180,
-                      color: Color.fromARGB(255, 238, 243, 233),
-                      alignment: Alignment.center,
-                      child: Image.asset (
-                      'lib/assets/main_icon.jpg', width: 130, height: 130,
+              Center(
+                child: Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      ClipOval(
+                        child: Container(
+                          width: 180,
+                          height: 180,
+                          color: Color.fromARGB(255, 238, 243, 233),
+                          alignment: Alignment.center,
+                          child: Image.asset(
+                            'lib/assets/main_icon.jpg',
+                            width: 130,
+                            height: 130,
+                          ),
+                        ),
                       ),
-                    ),
-                  ),
-                  Text('Blackjack',
-                    textAlign: TextAlign.center,
-                    style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 40,
-                      fontWeight: FontWeight.bold
-                    )
-                  )
-                ]
-              ),
-            )
-          ]
-        )
-      )
-    );
+                      Text('Blackjack',
+                          textAlign: TextAlign.center,
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 40,
+                              fontWeight: FontWeight.bold))
+                    ]),
+              )
+            ])));
   }
 }
