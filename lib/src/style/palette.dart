@@ -20,7 +20,7 @@ import 'package:flutter/material.dart';
 /// Colors here are implemented as getters so that hot reloading works.
 /// In practice, we could just as easily implement the colors
 /// as `static const`. But this way the palette is more malleable:
-/// we could allow players to customize colors, for example,
+/// we cou  ld allow players to customize colors, for example,
 /// or even get the colors from the network.
 class Palette {
   Color get pen => const Color(0xff1d75fb);
