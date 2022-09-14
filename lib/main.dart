@@ -25,6 +25,7 @@ import 'src/in_app_purchase/in_app_purchase.dart';
 import 'src/level_selection/level_selection_screen.dart';
 import 'src/level_selection/levels.dart';
 import 'src/splash_screen/splashscreen.dart';
+import 'src/play_session/homepage.dart';
 import 'src/main_menu/main_menu_screen.dart';
 import 'src/play_session/play_session_screen.dart';
 import 'src/player_progress/persistence/local_storage_player_progress_persistence.dart';
@@ -138,15 +139,12 @@ class MyApp extends StatelessWidget {
                     const MainMenuScreen(key: Key('main menu')),
                 routes: [
                   GoRoute(
-                      path: 'play',
-                      pageBuilder: (context, state) => buildMyTransition(
-                            child: const LevelSelectionScreen(
-                                key: Key('level selection')),
-                            color: context
-                                .watch<Palette>()
-                                .backgroundLevelSelection,
-                          ),
-                      routes: [
+                    path: 'play',
+                    pageBuilder: (context, state) => buildMyTransition(
+                      child: const Homepage(key: Key('level selection')),
+                      color: context.watch<Palette>().backgroundLevelSelection,
+                    ),
+                    /*routes: [
                         GoRoute(
                           path: 'session/:level',
                           pageBuilder: (context, state) {
@@ -164,8 +162,8 @@ class MyApp extends StatelessWidget {
                                   .backgroundPlaySession,
                             );
                           },
-                        ),
-                        GoRoute(
+                        ),*/
+                    /*GoRoute(
                           path: 'won',
                           pageBuilder: (context, state) {
                             final map = state.extra! as Map<String, dynamic>;
@@ -182,7 +180,8 @@ class MyApp extends StatelessWidget {
                             );
                           },
                         )
-                      ]),
+                      ]*/
+                  ),
                   GoRoute(
                     path: 'settings',
                     builder: (context, state) =>
