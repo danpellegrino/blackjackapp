@@ -133,7 +133,7 @@ class MyApp extends StatelessWidget {
               const SplashScreen(key: Key('splash screen')),
           routes: [
             GoRoute(
-                path: '/',
+                path: 'mainmenu',
                 builder: (context, state) =>
                     const MainMenuScreen(key: Key('main menu')),
                 routes: [

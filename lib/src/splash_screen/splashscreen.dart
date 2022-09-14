@@ -4,6 +4,7 @@ import 'dart:async';
 
 class SplashScreen extends StatefulWidget {
   @override
+  const SplashScreen({super.key});
   State<StatefulWidget> createState() {
     return StartState();
   }
