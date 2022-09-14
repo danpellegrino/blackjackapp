@@ -68,7 +68,8 @@ class _PlaySessionScreenState extends State<PlaySessionScreen> {
                     Align(
                       alignment: Alignment.centerRight,
                       child: InkResponse(
-                        onTap: () => GoRouter.of(context).push('/settings'),
+                        onTap: () =>
+                            GoRouter.of(context).push('/mainmenu/settings'),
                         child: Image.asset(
                           'assets/images/settings.png',
                           semanticLabel: 'Settings',
@@ -175,6 +176,6 @@ class _PlaySessionScreenState extends State<PlaySessionScreen> {
     await Future<void>.delayed(_celebrationDuration);
     if (!mounted) return;
 
-    GoRouter.of(context).go('/play/won', extra: {'score': score});
+    GoRouter.of(context).go('/mainmenu/play/won', extra: {'score': score});
   }
 }

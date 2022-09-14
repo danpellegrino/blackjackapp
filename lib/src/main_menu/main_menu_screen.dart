@@ -47,7 +47,7 @@ class MainMenuScreen extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 audioController.playSfx(SfxType.buttonTap);
-                GoRouter.of(context).go('/play');
+                GoRouter.of(context).go('/mainmenu/play');
               },
               child: const Text('Play'),
             ),
@@ -71,7 +71,7 @@ class MainMenuScreen extends StatelessWidget {
               _gap,
             ],
             ElevatedButton(
-              onPressed: () => GoRouter.of(context).go('/settings'),
+              onPressed: () => GoRouter.of(context).go('/mainmenu/settings'),
               child: const Text('Settings'),
             ),
             _gap,

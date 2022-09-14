@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../../screens/homepage.dart';
 import 'dart:async';
+import 'package:go_router/go_router.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -23,8 +24,7 @@ class StartState extends State<SplashScreen> {
   }
 
   route() {
-    Navigator.pushReplacement(
-        context, MaterialPageRoute(builder: (context) => Homepage()));
+    GoRouter.of(context).go('/mainmenu');
   }
 
   @override
