@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'homepage.dart';
+import '../../screens/homepage.dart';
 import 'dart:async';
 
 class SplashScreen extends StatefulWidget {
@@ -35,8 +35,8 @@ class StartState extends State<SplashScreen> {
               Positioned.fill(
                 child: Opacity(
                   opacity: 0.3,
-                  child:
-                      Image.asset('lib/assets/main_bg.jpg', fit: BoxFit.cover),
+                  child: Image.asset('assets/images/main_bg.jpg',
+                      fit: BoxFit.cover),
                 ),
               ),
               Center(
@@ -51,7 +51,7 @@ class StartState extends State<SplashScreen> {
                           color: Color.fromARGB(255, 238, 243, 233),
                           alignment: Alignment.center,
                           child: Image.asset(
-                            'lib/assets/main_icon.jpg',
+                            'assets/images/main_icon.jpg',
                             width: 130,
                             height: 130,
                           ),
