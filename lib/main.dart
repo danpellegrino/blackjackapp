@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/splashscreen.dart';
+// ignore: unused_import
 import 'package:dcdg/dcdg.dart';
 
 
