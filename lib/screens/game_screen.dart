@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:blackjackapp/components/gameboard.dart';
+import 'package:blackjackapp/components/game_board.dart';
 
 import '../services/deck_service.dart';
 
