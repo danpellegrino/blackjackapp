@@ -2,12 +2,11 @@ import 'package:flutter/material.dart';
 import 'dart:math';
 
 class CardTemplate extends StatelessWidget {
-  final suit;
-  final color;
-  final number;
+  final dynamic suit;
+  final dynamic number;
 
-  CardTemplate({this.suit,this.color,this.number});
-  
+  const CardTemplate({this.suit, this.number});
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -15,7 +14,7 @@ class CardTemplate extends StatelessWidget {
       child: ClipRRect(
         borderRadius: BorderRadius.circular(10),
           child: Container(
-              padding: EdgeInsets.all(5),
+              padding: const EdgeInsets.all(5),
             color: Colors.white,
             height: 150,
             width: 100,
@@ -30,7 +29,7 @@ class CardTemplate extends StatelessWidget {
                         style: TextStyle(
                           fontSize: 18,
                           fontWeight: FontWeight.bold,
-                          color: color),
+                          color: (suit.data == '♥' || suit.data == '♦') ? Colors.red : Colors.black),
                       )
                     ],
                   ),
@@ -44,7 +43,7 @@ class CardTemplate extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 18,
                             fontWeight: FontWeight.bold,
-                            color: color),
+                            color: (suit.data == '♥' || suit.data == '♦') ? Colors.red : Colors.black),
                         )
                       ],
                     ),

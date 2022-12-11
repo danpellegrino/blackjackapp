@@ -15,14 +15,14 @@ Widget diamond() {
 }
 
 Widget spade() {
-  return Text (
+  return const Text (
     '♠',
     style: TextStyle(color: Colors.black, fontSize: 40),
   );
 }
 
 Widget clover() {
-  return Text (
+  return const Text (
     '♣',
     style: TextStyle(color: Colors.black, fontSize: 40),
   );

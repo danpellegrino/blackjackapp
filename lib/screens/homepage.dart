@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 import 'dart:math';
-import 'card.dart';
-import 'cardtemplate.dart';
-import 'suits.dart';
+import '../components/cardback.dart';
+import '../components/cardtemplate.dart';
+import '../components/suits.dart';
 
 class Homepage extends StatefulWidget {
   @override
@@ -21,7 +21,7 @@ class _HomePageState extends State<Homepage> with SingleTickerProviderStateMixin
     super.initState();
 
     _animationController =
-        AnimationController(duration: Duration(milliseconds: 200), vsync: this);
+        AnimationController(duration: const Duration(milliseconds: 200), vsync: this);
 
     _animation = Tween(begin:0.0, end: 1.0).animate(_animationController)
       ..addListener(() {
@@ -34,38 +34,34 @@ class _HomePageState extends State<Homepage> with SingleTickerProviderStateMixin
     return Scaffold(
       backgroundColor: Colors.green[900],
       body: Center(
-        child: Container(
-          child: Column(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [CardTemplate(
-                  color: Colors.black,
-                  number: '10',
-                  suit: clover(),
-                ), CardTemplate(
-                  color: Colors.red,
-                  number: 'J',
-                  suit: heart(),
-                )],
-              ),
-              Transform.rotate(angle: pi/2, child: getFlippingCard("Q", clover(), Colors.red, Colors.red) ,),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  getFlippingCard("Q", clover(), Colors.black, Colors.black),
-                  getFlippingCard("A", diamond(), Colors.red, Colors.black)
-                ],
-              )
-            ],
-          ),
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [CardTemplate(
+                suit: clover(),
+                number: '10',
+              ), CardTemplate(
+                suit: heart(),
+                number: 'J',
+              )],
+            ),
+            Transform.rotate(angle: pi/2, child: getFlippingCard("Q", clover(), Colors.red) ,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                getFlippingCard("Q", clover(), Colors.black),
+                getFlippingCard("A", diamond(), Colors.black)
+              ],
+            )
+          ],
         ),
       ),
     );
   }
 
-  Widget getFlippingCard(var number, var suit, var color, var backColor) {
+  Widget getFlippingCard(var number, var suit, var backColor) {
     return Transform(
       alignment: FractionalOffset.center,
       transform: Matrix4.identity()..setEntry(3, 2, 0.002)..rotateY(pi * _animation.value),
@@ -81,7 +77,6 @@ class _HomePageState extends State<Homepage> with SingleTickerProviderStateMixin
         child: _animation.value >= 0.5 ? CardBack(
           color: backColor,
         ) : CardTemplate(
-                  color: color,
                   number: number,
                   suit: suit,
                 ),

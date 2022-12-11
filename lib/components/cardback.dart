@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
 
 class CardBack extends StatelessWidget {
-  final color;
+  final dynamic color;
 
-  CardBack({this.color});
+  const CardBack({this.color});
 
   @override
   Widget build(BuildContext context) {
