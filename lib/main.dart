@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/splashscreen.dart';
+import 'package:dcdg/dcdg.dart';
 
 
 void main() {
