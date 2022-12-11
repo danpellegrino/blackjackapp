@@ -8,7 +8,7 @@ class ApiService {
 
   Uri _url(
     String path, [
-    Map<String, dynamic> params = const {}
+    Map<String, dynamic> params = const {},
   ]) {
     String queryString = "";
     if(params.isNotEmpty) {
@@ -21,7 +21,7 @@ class ApiService {
     }
 
     path = rtrim(path, '/');
-    path = rtrim(path, '/');
+    path = ltrim(path, '/');
     queryString = rtrim(queryString, '&');
 
     final url = '$baseUrl/$path/$queryString';
@@ -29,14 +29,14 @@ class ApiService {
     return Uri.parse(url);
   }
 
-  Future<Map<String, dynamic>> get(
+  Future<Map<String, dynamic>> httpGet(
     String path, {
     Map<String, dynamic> params = const {},
   }) async {
     final url = _url(path, params);
 
     final response = await http.get(url);
-    if(response.bodyBytes.isEmpty) {
+    if (response.bodyBytes.isEmpty) {
       return {};
     }
 
