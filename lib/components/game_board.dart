@@ -20,7 +20,7 @@ class GameBoard extends StatelessWidget {
                     alignment: Alignment.center,
                     child: GestureDetector(
                       onTap: () async {
-                        await model.drawCards(model.players.first);
+                        await model.drawCards(model.turn.currentPlayer);
                       },
                       child: DeckPile(
                         remaining: model.currentDeck!.remaining,
@@ -28,9 +28,36 @@ class GameBoard extends StatelessWidget {
                     ),
                   ),
                   Align(
-                    alignment: Alignment.bottomCenter,
+                    alignment: Alignment.topCenter,
                     child: CardList(
-                      player: model.players[0],
+                      player: model.players[1],
+                    ),
+                  ),
+                  Align(
+                    alignment: Alignment.bottomCenter,
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        Padding(
+                          padding: const EdgeInsets.all(8.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.end,
+                            children: [
+                              if (model.turn.currentPlayer == model.players[0])
+                                ElevatedButton(
+                                    onPressed: model.canEndTurn
+                                        ? () {
+                                            model.endTurn();
+                                          }
+                                        : null,
+                                    child: const Text("End Turn"))
+                            ],
+                          ),
+                        ),
+                        CardList(
+                          player: model.players[0],
+                        ),
+                      ],
                     ),
                   )
                 ],

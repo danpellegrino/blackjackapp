@@ -54,4 +54,28 @@ class GameProvider with ChangeNotifier {
 
     notifyListeners();
   }
+
+  bool get canEndTurn {
+    return turn.drawCount > 0;
+  }
+
+  void endTurn() {
+    _turn.nextTurn();
+
+    if (_turn.currentPlayer.isBot) {
+      botTurn();
+    }
+
+    notifyListeners();
+  }
+
+  Future<void> botTurn() async {
+    await Future.delayed(const Duration(milliseconds: 500));
+    await drawCards(_turn.currentPlayer);
+    await Future.delayed(const Duration(milliseconds: 500));
+
+    if (canEndTurn) {
+      endTurn();
+    }
+  }
 }
