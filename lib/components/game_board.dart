@@ -77,7 +77,7 @@ class GameBoard extends StatelessWidget {
               )
             : Center(
                 child: TextButton(
-                child: Text("New Game"),
+                child: const Text("New Game"),
                 onPressed: () {
                   final players = [
                     PlayerModel(name: "Tyler", isHuman: true),
