@@ -3,6 +3,7 @@ import 'package:blackjackapp/providers/game_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../models/card_model.dart';
 import '../models/player_model.dart';
 import 'deck_pile.dart';
 import 'discard_pile.dart';
@@ -64,6 +65,10 @@ class GameBoard extends StatelessWidget {
                         ),
                         CardList(
                           player: model.players[0],
+                          onPlayCard: (CardModel card) {
+                            model.playCard(
+                                player: model.players[0], card: card);
+                          },
                         ),
                       ],
                     ),

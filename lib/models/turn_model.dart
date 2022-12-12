@@ -17,10 +17,10 @@ class Turn {
 
   void nextTurn() {
     index += 1;
-    // This logic needs to be updated if >2 players are implemented
-    currentPlayer = index % 2 == 0 ? players[0] : players[1];
     drawCount = 0;
     actionCount = 0;
+    // This logic needs to be updated if >2 players are implemented
+    currentPlayer = index % 2 == 0 ? players[0] : players[1];
   }
 
   PlayerModel get otherPlayer {
