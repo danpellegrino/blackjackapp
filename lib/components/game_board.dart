@@ -5,6 +5,7 @@ import 'package:provider/provider.dart';
 
 import '../models/player_model.dart';
 import 'deck_pile.dart';
+import 'discard_pile.dart';
 
 class GameBoard extends StatelessWidget {
   const GameBoard({Key? key}) : super(key: key);
@@ -18,13 +19,20 @@ class GameBoard extends StatelessWidget {
                 children: [
                   Align(
                     alignment: Alignment.center,
-                    child: GestureDetector(
-                      onTap: () async {
-                        await model.drawCards(model.turn.currentPlayer);
-                      },
-                      child: DeckPile(
-                        remaining: model.currentDeck!.remaining,
-                      ),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        GestureDetector(
+                          onTap: () async {
+                            await model.drawCards(model.turn.currentPlayer);
+                          },
+                          child: DeckPile(
+                            remaining: model.currentDeck!.remaining,
+                          ),
+                        ),
+                        const SizedBox(width: 8),
+                        DiscardPile(cards: model.discards),
+                      ],
                     ),
                   ),
                   Align(
