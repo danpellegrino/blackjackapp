@@ -2,7 +2,6 @@ import 'package:blackjackapp/providers/blackjack_game_provider.dart';
 import 'package:blackjackapp/screens/game_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'screens/splashscreen.dart';
 // ignore: unused_import
 import 'package:dcdg/dcdg.dart';
 
@@ -12,22 +11,13 @@ void main() {
       providers: [
         ChangeNotifierProvider(create: (_) => BlackjackGameProvider())
       ],
-      child: const NewApp(),
+      child: const MyApp(),
     ),
   );
 }
 
 class MyApp extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return MaterialApp(
-      home: SplashScreen(),
-    );
-  }
-}
-
-class NewApp extends StatelessWidget {
-  const NewApp({Key? key}) : super(key: key);
+  const MyApp({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
