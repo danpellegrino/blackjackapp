@@ -1,4 +1,4 @@
-import 'package:blackjackapp/providers/game_provider.dart';
+import 'package:blackjackapp/providers/blackjack_game_provider.dart';
 import 'package:blackjackapp/screens/game_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
@@ -9,7 +9,9 @@ import 'package:dcdg/dcdg.dart';
 void main() {
   runApp(
     MultiProvider(
-      providers: [ChangeNotifierProvider(create: (_) => GameProvider())],
+      providers: [
+        ChangeNotifierProvider(create: (_) => BlackjackGameProvider())
+      ],
       child: const NewApp(),
     ),
   );

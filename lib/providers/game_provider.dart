@@ -1,3 +1,4 @@
+import 'package:blackjackapp/components/constants.dart';
 import 'package:blackjackapp/services/deck_service.dart';
 import 'package:flutter/material.dart';
 
@@ -6,12 +7,13 @@ import '../models/deck_model.dart';
 import '../models/player_model.dart';
 import '../models/turn_model.dart';
 
-class GameProvider with ChangeNotifier {
+abstract class GameProvider with ChangeNotifier {
   GameProvider() {
     _service = DeckService();
   }
 
   late DeckService _service;
+  DeckService get service => _service;
 
   late Turn _turn;
   Turn get turn => _turn;
@@ -41,13 +43,32 @@ class GameProvider with ChangeNotifier {
 
   Future<void> setupBoard() async {}
 
+  Future<void> drawCardToDiscardPile({int count = 1}) async {
+    final draw = await _service.drawCards(_currentDeck!, count: count);
+
+    _discards.addAll(draw.cards);
+    _currentDeck!.remaining = draw.remaining;
+    notifyListeners();
+  }
+
+  void setLastPlayed(CardModel card) {
+    gameState[GS_LAST_SUIT] = card.suit;
+    gameState[GS_LAST_VALUE] = card.value;
+
+    notifyListeners();
+  }
+
   bool get canDrawCard {
     return turn.drawCount < 1;
   }
 
-  Future<void> drawCards(PlayerModel player, {int count = 1}) async {
+  Future<void> drawCards(
+    PlayerModel player, {
+    int count = 1,
+    bool allowAnyTime = false,
+  }) async {
     if (currentDeck == null) return;
-    if (!canDrawCard) return;
+    if (!allowAnyTime && !canDrawCard) return;
 
     final draw = await _service.drawCards(_currentDeck!, count: count);
 
@@ -77,6 +98,8 @@ class GameProvider with ChangeNotifier {
     await applyCardSideEffects(card);
 
     _turn.actionCount += 1;
+
+    setLastPlayed(card);
 
     notifyListeners();
   }

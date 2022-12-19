@@ -19,6 +19,7 @@ class Turn {
     index += 1;
     drawCount = 0;
     actionCount = 0;
+    currentPlayer.score = 0;
     // This logic needs to be updated if >2 players are implemented
     currentPlayer = index % 2 == 0 ? players[0] : players[1];
   }

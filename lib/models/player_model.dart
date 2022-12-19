@@ -4,9 +4,13 @@ class PlayerModel {
   final String name;
   final bool isHuman;
   List<CardModel> cards;
+  int score;
 
   PlayerModel(
-      {required this.name, this.cards = const [], this.isHuman = false});
+      {required this.name,
+      this.cards = const [],
+      this.isHuman = false,
+      this.score = 0});
 
   addCards(List<CardModel> newCards) {
     cards = [...cards, ...newCards]; // Combines the two arrays

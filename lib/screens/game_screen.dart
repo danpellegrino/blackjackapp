@@ -1,9 +1,9 @@
+import 'package:blackjackapp/providers/blackjack_game_provider.dart';
 import 'package:flutter/material.dart';
 import 'package:blackjackapp/components/game_board.dart';
 import 'package:provider/provider.dart';
 
 import '../models/player_model.dart';
-import '../providers/game_provider.dart';
 
 class GameScreen extends StatefulWidget {
   const GameScreen({Key? key}) : super(key: key);
@@ -13,17 +13,18 @@ class GameScreen extends StatefulWidget {
 }
 
 class _GameScreenState extends State<GameScreen> {
-  late final GameProvider _gameProvider;
+  late final BlackjackGameProvider _gameProvider;
 
   @override
   void initState() {
-    _gameProvider = Provider.of<GameProvider>(context, listen: false);
+    _gameProvider = Provider.of<BlackjackGameProvider>(context, listen: false);
     super.initState();
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.green[900],
       appBar: AppBar(
         title: const Text("Card Game"),
         actions: [
