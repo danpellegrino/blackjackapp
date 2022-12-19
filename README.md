@@ -19,8 +19,8 @@ Valid device_id (dependent on configuration):
 ## Features
 - [x] Card UI
 - [x] Basic Bot
-- [] Currency System
-- [] Overall Game Play Completed
+- [ ] Currency System
+- [ ] Overall Game Play Completed
 
 ## Technologies
 
