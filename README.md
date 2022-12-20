@@ -11,6 +11,7 @@ flutter run -d <device_id>
 
 Valid device_id (dependent on configuration):
 * windows
+* linux
 * macOS
 * chrome
 * edge
